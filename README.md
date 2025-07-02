@@ -5,7 +5,7 @@ Este projeto é uma ferramenta para baixar certificados SSL/TLS de vários sites
 
 ## Pré-requisitos
 
-Para executar este projeto, você precisará ter os seguintes softwares instalados:
+Para executar este projeto, é preciso ter os seguintes softwares instalados:
 
 - **Java JDK 11**: Necessário para criar o arquivo `.jar`.
   - [Download do JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
@@ -18,7 +18,7 @@ Para executar este projeto, você precisará ter os seguintes softwares instalad
 
 1. **Clone o repositório**:
    ```bash
-   git clone https://github.com/seuusuario/atualizador-certificados.git
+   git clone https://github.com/renatahollanda/atualizador-certificados.git
    cd atualizador-certificados
    ```
 
