@@ -23,3 +23,6 @@ Thumbs.db
 # Ignorar ambiente virtual Python (se houver)
 .venv/
 __pycache__/
+
+# Ignorar pastas de mídia
+img/
