@@ -1,0 +1,7 @@
+https://hod.serpro.gov.br/, hod.serpro.cer
+https://sta.tesouro.fazenda.gov.br/, sta.tesouro.fazenda.cer
+https://siop.planejamento.gov.br/, siop.planejamento.cer
+https://portaldatransparencia.gov.br/, portaldatransparencia.cer
+https://siafi.tesouro.gov.br/, tesouro.serpro.cer
+https://repositorio.dados.gov.br/seges, repositorio.dados.cer
+https://contratos.comprasnet.gov.br/, contratos.comprasnet.cer
