@@ -1,0 +1,25 @@
+# Ignorar certificados e jars
+*.cer
+*.jar
+
+# Ignorar arquivos temporários
+*.log
+*.tmp
+
+# Ignorar pastas de build e binários
+build/
+dist/
+out/
+
+# Ignorar arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar configurações de IDEs
+.vscode/
+.idea/
+*.iml
+
+# Ignorar ambiente virtual Python (se houver)
+venv/
+__pycache__/
