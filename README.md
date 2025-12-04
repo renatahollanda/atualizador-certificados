@@ -1,7 +1,7 @@
 # Projeto de Download de Certificados
 
 ## Descrição
-Este projeto é uma ferramenta para baixar certificados SSL/TLS de vários sites e salvá-los como arquivos `.cer`. O script em Python utiliza o OpenSSL para buscar certificados de URLs especificadas e organiza-os em um arquivo `.jar`.
+Este projeto é uma ferramenta para baixar certificados SSL/TLS de vários sites e salvá-los como arquivos `.cer`. O script em Python utiliza o OpenSSL para buscar certificados de URLs especificadas e organiza, compactando em um único arquivo `.jar`.
 
 ## Pré-requisitos
 
@@ -13,50 +13,58 @@ Para executar este projeto, é preciso ter os seguintes softwares instalados:
   - [Download do Python](https://www.python.org/downloads/)
 - **OpenSSL**: Necessário para a execução do script Python.
   - [Download do OpenSSL](https://slproweb.com/products/Win32OpenSSL.html) (Windows) ou use o gerenciador de pacotes do seu sistema (Linux/macOS).
+  - Ou, caso tenha o [Git](https://git-scm.com/) instalado, utilize o `openssl` que já vem nos arquivos do Git. Basta configurar o path nas variáveis de ambiente, caminho padrão: C:\Program Files\Git\mingw64\bin.
 
-## Configuração
-
-1. **Clone o repositório**:
-   ```bash
-   git clone https://github.com/renatahollanda/atualizador-certificados.git
-   cd atualizador-certificados
-   ```
-
-2. **Prepare o arquivo de entrada**: Crie um arquivo chamado `dicionario.txt` no diretório do projeto com URLs e nomes de arquivos correspondentes:
-    ```txt
-    example.com, exemplo_certificado
-    sub.dominio.gov.br, certificado_gov
-    ```
-
-3. **Executando o arquivo .bat:** No diretório do projeto, execute o arquivo `CertsMaker.bat` no cmd:
-    ```bash
-    CertsMaker.bat
-    ```
-
-## Configuração
-O arquivo `CertsMaker.bat` irá:
-
-1. Definir o diretório do Java.
-2. Chamar o script Python para baixar os certificados.
-3. Criar um arquivo .jar contendo todos os certificados baixados.
-
-Os certificados serão salvos no diretório `./certificados/` como arquivos `.cer`, e o arquivo `.jar` será criado no mesmo diretório.
 
 ## Estrutura de Arquivos
-**atualizador-certificados/**
 
-* **certificados/**: Pasta para certificados baixados
-  * **CertsMaker.bat**: Script para executar o processo
+<div style="text-align: center;">
+  <img src="./img/estrutura-arquivos-mapa-visual.png" alt="Esquema Visual da Estrutura dos Arquivos">
+</div>
 
-* **dicionario.txt**: Arquivo de entrada com URLs e nomes de arquivos
 
-* **download_certs.py**: Script principal para download de certificados
+## Como Executar
 
-* **README.md**: Documentação
+1. **Preparar o arquivo de entrada**: Crie (ou edite) o arquivo `data/dicionario.txt` e adicione uma lista de sites e nomes de saída, no formato:
+    ```txt
+    https://exemplo.com, exemplo
+    https://sub.dominio.gov.br, certificado_gov
+    ```
+
+2. **Executar o processo completo**: No Windows, abra o Prompt de Comando (CMD) e navegue até a pasta `scripts` no caminho padrão:
+    ```bash
+    cd C:/Projetos/atualizador-certificados/scripts
+    ```
+    Por exemplo, e execute:
+    ```
+    CertsMaker.bat
+    ```
+    **O arquivo `.bat` irá:**
+    1. Definir o diretório do Java (`JAVA_HOME`);
+    2. Executar o programa Python (`python -m src`);
+    3. Criar o arquivo `certs.jar` dentro da pasta `certificados/`.
+
+
+## Saída esperada
+Após a execução, será **criada automaticamente** a pasta `certificados/`, contendo:
+* Todos os certificados baixados (`.cer`);
+* O arquivo compactado `certs.jar`.
+
 
 ## Solução de Problemas
-* **Erro ao executar o arquivo `.bat`:**
-  * Certifique-se de que o Java JDK, Python e OpenSSL estão instalados e configurados corretamente no PATH do sistema.
+### **Erro: `No module named src`**
+> Ocorre quando o script é executado fora da raiz do projeto.
 
-* **Certificados não baixados:**
-  * Verifique se o arquivo `dicionario.txt` está formatado corretamente e se as URLs estão acessíveis.
+**Solução:**<br> 
+Certifique-se de estar executando o .bat a partir da pasta scripts/.<br>
+O arquivo já contém o comando cd /d "%~dp0.." para garantir que o Python rode no diretório correto.
+
+### **Erro: “OpenSSL não é reconhecido como comando interno”**
+**Solução:**<br>
+Adicione o caminho do OpenSSL às variáveis de ambiente (PATH) do Windows, ou instale via gerenciador de pacotes no Linux/macOS.
+
+### **Certificados não baixados**
+**Soluções possíveis:**<br>
+* Verifique se as URLs em `data/dicionario.txt` estão corretas e acessíveis.
+* Confira se o OpenSSL está funcionando via terminal (`openssl version`).
+* Execute o `.bat` novamente com o CMD em modo administrador.
